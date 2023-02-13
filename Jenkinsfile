@@ -58,6 +58,26 @@ pipeline{
                 }
             }
         }
+        stage('war file upload') {
+            steps {
+                script {
+                    nexusArtifactUploader artifacts: [ 
+                        [
+                            artifactId: 'buddipammu', 
+                            classifier: '', 
+                            file: 'target/buddipammu.war', 
+                            type: 'war']
+                    ], 
+                        credentialsId: 'nexus-key', 
+                        groupId: 'com.ustglobal', 
+                        nexusUrl: '52.66.247.151:8081', 
+                        nexusVersion: 'nexus3', 
+                        protocol: 'http', 
+                        repository: 'helloworldapp-release', 
+                        version: '1.0.0'
+                }
+            }
+        }
     }
 }
 
