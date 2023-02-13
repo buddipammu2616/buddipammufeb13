@@ -61,12 +61,14 @@ pipeline{
         stage('war file upload') {
             steps {
                 script {
-                    nexusArtifactUploader artifacts: [ 
+                    nexusArtifactUploader artifacts: 
+                        [ 
                         [
                             artifactId: 'buddipammu', 
                             classifier: '', 
                             file: 'target/buddipammu.war', 
-                            type: 'war']
+                            type: 'war'
+                        ]
                     ], 
                         credentialsId: 'nexus-key', 
                         groupId: 'com.ustglobal', 
