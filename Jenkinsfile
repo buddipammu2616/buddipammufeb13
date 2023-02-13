@@ -82,6 +82,13 @@ pipeline{
                 }
             }
         }
+        stage('tomcat deployment') {
+            steps {
+                script {
+                    deploy adapters: [tomcat8(credentialsId: 'tomcat-credentials', path: '', url: 'http://13.126.182.173:2020/')], contextPath: null, war: '**/*.war'
+                }
+            }
+        }
     }
 }
 
